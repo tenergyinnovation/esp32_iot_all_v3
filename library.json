@@ -1,0 +1,17 @@
+{
+  "name": "esp32_iot_all_v3",
+  "keywords": "FreeRTOS, ESP32, frameworks",
+  "description": "esp32_iot_all_v3 Library",
+  "homepage": "https://www.tenergyinnovation.co.th",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tenergyinnovation/esp32_iot_all_v3"
+  },
+  "version": "1.0.0",
+  "authors": {
+    "name": "esp32_iot_all_v3",
+    "url": "https://github.com/tenergyinnovation/"
+  },
+  "frameworks": "arduino",
+  "platforms": "esp32"
+}
