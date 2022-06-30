@@ -54,8 +54,9 @@ public:
     #define ONE_WIRE_BUS    14
     #define RXD2            16
     #define TXD2            17
-    #define TXD3            26
-    #define RXD3            27
+    #define RXD3            26
+    #define TXD3            27
+  
 
     #define TEMPERATURE_PRECISION 12 // Lower resolution
 
