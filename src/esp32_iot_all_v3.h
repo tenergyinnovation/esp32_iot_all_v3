@@ -3,8 +3,10 @@
  * Description  :     Class for Hardware config and function for esp32_iot_all_v3 module
  * Author       :     Tenergy Innovation Co., Ltd.
  * Date         :     24 June 2022
- * Revision     :     1.0
+ * Revision     :     1.1
  * Rev1.0       :     Original 
+ * Rev1.1       :     - Change pin RXD3, TXD3 
+ *                    - Add Example_Uart2_Test
  * website      :     http://www.tenergyinnovation.co.th
  * Email        :     uten.boonliam@innovation.co.th
  * TEL          :     089-140-7205
@@ -21,7 +23,7 @@
 class esp32_iot_all_v3
 {
 private:
-#define version_c  "1.0"
+#define version_c  "1.1"
 
 private:
 /* RTC variable */
