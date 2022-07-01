@@ -1,6 +1,10 @@
 /***********************************************************************
  * Project      :     Example_interfaceALL_Test
  * Description  :     Test switch, LED, Relay, Buzzer .. ea
+ *                    1. Can set clock by press and hold SW1 or SW2 during setup function (after reset)
+ *                    SW = set value, SW2 = Enter
+ *                    2. In loop function press SW1 and SW2 will Change status of Relay1 - Relay4
+ *                    3. Slide switch will automatic change status of Relay1 - Relay4
  * Hardware     :     esp32_iot_all_V3         
  * Author       :     Tenergy Innovation Co., Ltd.
  * Date         :     19/02/2022
@@ -311,7 +315,7 @@ void rtc_setting(void)
       }while(!mcu.Sw2());
       while(mcu.Sw2());
 
-      mcu.setDateTime(year,month,day,hour,month,sec); //set date-time by parameter => year, month, day,hour, min, sec
+       mcu.setDateTime(year,month,day,hour,minute,sec); //set date-time by parameter => year, month, day,hour, min, sec
       mcu.buzzer_beep(2);
 
     //*** setting minute ***
@@ -331,7 +335,7 @@ void rtc_setting(void)
       
       }while( !mcu.Sw2());
       while( mcu.Sw2() );    
-      mcu.setDateTime(year,month,day,hour,month,sec); //set date-time by parameter => year, month, day,hour, min, sec
+       mcu.setDateTime(year,month,day,hour,minute,sec); //set date-time by parameter => year, month, day,hour, min, sec
       mcu.buzzer_beep(2);
 
 
@@ -351,7 +355,7 @@ void rtc_setting(void)
       
       }while( !mcu.Sw2());
       while( mcu.Sw2() );    
-      mcu.setDateTime(year,month,day,hour,month,sec); //set date-time by parameter => year, month, day,hour, min, sec
+       mcu.setDateTime(year,month,day,hour,minute,sec); //set date-time by parameter => year, month, day,hour, min, sec
       mcu.buzzer_beep(2);      
 
       
@@ -372,7 +376,7 @@ void rtc_setting(void)
       
       }while( !mcu.Sw2());
       while( mcu.Sw2() );    
-      mcu.setDateTime(year,month,day,hour,month,sec); //set date-time by parameter => year, month, day,hour, min, sec
+       mcu.setDateTime(year,month,day,hour,minute,sec); //set date-time by parameter => year, month, day,hour, min, sec
       mcu.buzzer_beep(2);  
 
 
@@ -392,7 +396,7 @@ void rtc_setting(void)
       
       }while( !mcu.Sw2());
       while( mcu.Sw2() );    
-      mcu.setDateTime(year,month,day,hour,month,sec); //set date-time by parameter => year, month, day,hour, min, sec
+      mcu.setDateTime(year,month,day,hour,minute,sec); //set date-time by parameter => year, month, day,hour, min, sec
       mcu.buzzer_beep(2);        
    
       mcu.clearOled();
