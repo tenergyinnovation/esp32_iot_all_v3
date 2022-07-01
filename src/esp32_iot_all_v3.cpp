@@ -76,6 +76,16 @@ void HospitalImage();
 void PoliceImage();
 void ChaiImage();
 void AddImage();
+void ChatchatImage();
+void WorkworkworkImage();
+void ChawarojImage();
+void ManopImage();
+void ElleImage();
+void PanImage();
+void RboeImage();
+void TleImage();    
+
+
 
 
 
@@ -105,7 +115,7 @@ typedef void (*Demo)(void);
 Demo demos[] = {tenergyImage, drawProgressBarDemo, WiFiImage, WiFiOnImage, WiFiOffImage, HotspotImage, WiFiCoffeeImage, FacebookImage, BugImage, FixImage,
                 CameraImage, ClockImage, MotorImage, EepromImage, HomeImage, LedImage, MotionImage, RelayImage, Rs485Image, SteppingImage, TemperatureImage, Tmp1638Image,
                 UltrasonicImage, UtenImage, PotentiometerImage, LdrImage, PayuthImage, Dip3swImage, MjuImage, InputImage,SwitchImage,NetpieImage,AmpereImage,BlynkImage,BatteryImage,
-               HospitalImage,PoliceImage,ChaiImage,AddImage
+               HospitalImage,PoliceImage,ChaiImage,AddImage,ChatchatImage,WorkworkworkImage,ChawarojImage,ManopImage,ElleImage,PanImage,RboeImage,TleImage
                };
 int demoMode = 0;
 int counter = 1;
@@ -1190,6 +1200,93 @@ void ChaiImage() {
  ***********************************************************************/
 void AddImage() {
   display.drawXbm(0, 0, add_Logo_width, add_Logo_height, add_bits);
+}
+
+/***********************************************************************
+   FUNCTION:    ChatchatImage
+   DESCRIPTION: ChatchatImage
+   PARAMETERS:  nothing
+   RETURNED:    nothing
+ ***********************************************************************/
+void ChatchatImage() {
+  display.drawXbm(0, 0, chatchat_Logo_width, chatchat_Logo_height, chatchat_bits);
+}
+
+/***********************************************************************
+   FUNCTION:    WorkworkworkImage
+   DESCRIPTION: WorkworkworkImage
+   PARAMETERS:  nothing
+   RETURNED:    nothing
+ ***********************************************************************/
+void WorkworkworkImage() {
+  display.drawXbm(0, 0, workworkwork_Logo_width, workworkwork_Logo_height, workworkwork_bits);
+}
+
+
+/***********************************************************************
+   FUNCTION:    ChawarojImage
+   DESCRIPTION: ChawarojImage
+   PARAMETERS:  nothing
+   RETURNED:    nothing
+ ***********************************************************************/
+void ChawarojImage()
+{
+display.drawXbm(0, 0, chawaroj_Logo_width, chawaroj_Logo_height, chawaroj_bits);
+}
+
+/***********************************************************************
+   FUNCTION:    ManopImage
+   DESCRIPTION: ManopImage
+   PARAMETERS:  nothing
+   RETURNED:    nothing
+ ***********************************************************************/
+void ManopImage()
+{
+display.drawXbm(0, 0, manop_Logo_width, manop_Logo_height, manop_bits);
+}
+
+/***********************************************************************
+   FUNCTION:    ElleImage
+   DESCRIPTION: ElleImage
+   PARAMETERS:  nothing
+   RETURNED:    nothing
+ ***********************************************************************/
+void ElleImage()
+{
+display.drawXbm(0, 0, elle_Logo_width, elle_Logo_height,elle_bits);
+}
+
+/***********************************************************************
+   FUNCTION:    PanImage
+   DESCRIPTION: PanImage
+   PARAMETERS:  nothing
+   RETURNED:    nothing
+ ***********************************************************************/
+void PanImage()
+{
+display.drawXbm(0, 0, pan_Logo_width, pan_Logo_height, pan_bits);
+}
+
+/***********************************************************************
+   FUNCTION:    RboeImage
+   DESCRIPTION: RboeImage
+   PARAMETERS:  nothing
+   RETURNED:    nothing
+ ***********************************************************************/
+void RboeImage()
+{
+display.drawXbm(0, 0, rboe_Logo_width, rboe_Logo_height, rboe_bits);
+}
+
+/***********************************************************************
+   FUNCTION:    TleImage
+   DESCRIPTION: TleImage
+   PARAMETERS:  nothing
+   RETURNED:    nothing
+ ***********************************************************************/
+void TleImage()
+{
+display.drawXbm(0, 0, tle_Logo_width, tle_Logo_height, tle_bits);
 }
 
 #pragma endregion
