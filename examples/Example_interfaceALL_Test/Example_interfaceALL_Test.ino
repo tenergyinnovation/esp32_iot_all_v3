@@ -67,7 +67,7 @@ void setup() {
 
   /*** RTC (ds3231 ic) initial ***/
   mcu.beginTime();
-  mcu.adjustTime();  //Date and Time are value during upload program to esp32_iot_all board
+  // mcu.adjustTime();  //Date and Time are value during upload program to esp32_iot_all board
   if(mcu.Sw1() || mcu.Sw2())
   {
     mcu.picOled(pic_clock);
