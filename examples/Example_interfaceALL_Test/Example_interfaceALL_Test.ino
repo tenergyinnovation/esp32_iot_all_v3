@@ -16,6 +16,7 @@
 /**************************************/
 esp32_iot_all_v3 mcu; //define object
 HardwareSerial RS485(1);
+HardwareSerial Uart2(1);
 
 /**************************************/
 /*        define global variable      */
@@ -42,8 +43,10 @@ void setup() {
 
   Serial.begin(115200);
   RS485.begin(9600, SERIAL_8N1, 16, 17);
+  Uart2.begin(115200,SERIAL_8N1,RXD3,TXD3);
   Serial.printf("\r\n**** Example_interfaceALL_Test ****\r\n");
   RS485.printf("\r\n**** Example_interfaceALL_Test ****\r\n");
+  Uart2.printf("\r\n**** Example_interfaceALL_Test ****\r\n");
   mcu.library_version();
 
   /*** Relay initial ***/
@@ -111,6 +114,7 @@ void loop() {
         mcu.picOled(pic_switch);
         Serial.printf("Info[Serial]: SW1 pressing\r\n");
         RS485.printf("Info[RS485]: SW1 pressing\r\n");
+        Uart2.printf("Info[Uart2]: SW1 pressing\r\n");
         while(mcu.Sw1());
         if(_rotate_relay++ >= 4) _rotate_relay = 0;
         switch (_rotate_relay)
@@ -163,6 +167,7 @@ void loop() {
         mcu.picOled(pic_switch);
         Serial.printf("Info[Serial]: SW2 pressing\r\n");
         RS485.printf("Info[RS485]: SW2 pressing\r\n");
+        Uart2.printf("Info[Uart2]: SW2 pressing\r\n");
         mcu.buzzer_beep(1);
         while(mcu.Sw2());
         if(_rotate_relay-- <= 0) _rotate_relay = 4;
@@ -216,6 +221,7 @@ void loop() {
       {
         Serial.printf("Info[Serial]: Slide Switch turn-ON\r\n");
         RS485.printf("Info[RS485]: Slide Switch turn-ON\r\n");
+        Uart2.printf("Info[Uart2]: Slide Switch turn-ON\r\n");
         if(_rotate_relay++ >= 4) _rotate_relay = 0;
         switch (_rotate_relay)
         {
