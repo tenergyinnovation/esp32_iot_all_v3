@@ -3,11 +3,12 @@
  * Description  :     Class for Hardware config and function for esp32_iot_all_v3 module
  * Author       :     Tenergy Innovation Co., Ltd.
  * Date         :     24 June 2022
- * Revision     :     1.2
+ * Revision     :     1.3
  * Rev1.0       :     Original 
  * Rev1.1       :     - Change pin RXD3, TXD3 
  *                    - Add Example_Uart2_Test
  * Rev1.2       :     Add picture of OLED  
+ * Rev1.3       :     Frequency_Out function
  * website      :     http://www.tenergyinnovation.co.th
  * Email        :     uten.boonliam@innovation.co.th
  * TEL          :     089-140-7205
@@ -24,7 +25,7 @@
 class esp32_iot_all_v3
 {
 private:
-#define version_c  "1.2"
+#define version_c  "1.3"
 
 private:
 /* RTC variable */
@@ -135,6 +136,7 @@ public:
     void library_version(void);
     bool PWM_Setup(uint8_t channel, double freq, uint8_t resolution_bit, uint8_t pin);
     bool PWM_Drive(uint8_t channel, uint8_t percentage);
+    bool Frequency_Out(uint8_t pin, double freq);
 
     //*** DS3231 ***//
     void beginTime(void);

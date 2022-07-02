@@ -728,6 +728,80 @@ bool esp32_iot_all_v3::PWM_Drive(uint8_t channel,uint8_t percentage){
 }
 
 
+ /***********************************************************************
+ * FUNCTION:    Frequency_Out
+ * DESCRIPTION: Generate Frequency to pin 5,18,23,19 but else not allow
+ * PARAMETERS:  pin=[5,18,23 and 19], freq=0-19500Hz
+ * RETURNED:    0 = error, 1 = pass 
+ ***********************************************************************/
+bool esp32_iot_all_v3::Frequency_Out(uint8_t pin, double freq)
+{
+
+  uint8_t _channel;
+
+  /* check pin */
+  if( (pin != 5) && (pin != 18) && (pin != 23) && (pin != 19) )
+  {
+    Serial.printf("Error: parameter input pin must be 5,18,23,19 but else is not allow\r\n");
+    return 0;
+  }
+  else
+  {
+    /* define channel */
+    switch (pin)
+    {
+    case 5:
+      _channel=1;
+      break;
+    case 18:
+      _channel=3;
+      break;
+    case 23:
+      _channel=5;
+      break;
+    case 19:
+      _channel=7;
+      break;
+    default:
+      break;
+    }
+  }
+
+  /* check frequency */
+  if( (freq < 0) || (freq > 19500) )
+  {
+    Serial.printf("Error: Out of range frequency [0-19500Hz]\r\n");
+    return 0;
+  }
+
+
+  /* set 0 Hz */
+  if(freq == 0)
+  {
+        Serial.printf("Info: pin = %d, channel = %d, frequency = %.0fHz\r\n",pin,_channel,freq);
+        ledcSetup(_channel,1,12);
+        ledcAttachPin(pin,_channel);
+        ledcWrite(pin,0);
+        vTaskDelay(300);
+        return 1;
+  }
+  else
+  {
+        Serial.printf("Info: pin = %d, channel = %d, frequency = %.0fHz\r\n",pin,_channel,freq);
+        ledcSetup(_channel,freq,12);
+        ledcAttachPin(pin,_channel);
+        ledcWrite(_channel,4095/2);
+        vTaskDelay(300);
+        
+        ledcSetup(_channel,freq,12); //<- Fix bug by need to re-run command
+        ledcAttachPin(pin,_channel);
+        ledcWrite(_channel,4095/2);
+        vTaskDelay(300);
+        return 1;
+  }
+  
+}
+
 #pragma region  OLED PICTURE
 
 /***********************************************************************
