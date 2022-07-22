@@ -3,12 +3,20 @@
  * Description  :     Class for Hardware config and function for esp32_iot_all_v3 module
  * Author       :     Tenergy Innovation Co., Ltd.
  * Date         :     24 June 2022
- * Revision     :     1.3
+ * Revision     :     1.4
  * Rev1.0       :     Original 
  * Rev1.1       :     - Change pin RXD3, TXD3 
  *                    - Add Example_Uart2_Test
  * Rev1.2       :     Add picture of OLED  
  * Rev1.3       :     Frequency_Out function
+ * Rev1.4       :     - Add PZEM-016 Energy Meter AC        
+ *                    - Add PZEM-003 Energy Meter DC  
+ *                    - Add WTR10_E(SHT20) temperature and humidity sensor (RS485)
+ *                    - Add XY-MD02(SHT20) temperature and humidity sensor (RS485)    
+ *                    - Add SOIL MOISTURE PR-3000-H-N01 sensor (RS485) fix id = 1, baud rate = 4800  
+ *                    - Add RS485 Water Flow Meter RS485 MODBUS output  
+ *                    - Add PYR20-Solar Radiation/Pyranometer Sensor, RS485, Modbus   
+ *                    - Add tiny32 ModbusRTU communication      
  * website      :     http://www.tenergyinnovation.co.th
  * Email        :     uten.boonliam@innovation.co.th
  * TEL          :     089-140-7205
@@ -25,7 +33,7 @@
 class esp32_iot_all_v3
 {
 private:
-#define version_c  "1.3"
+#define version_c  "1.4"
 
 private:
 /* RTC variable */
@@ -161,6 +169,83 @@ public:
     void picOled(int pic_xxx);
     bool stringOled(int16_t xMove, int16_t yMove, uint8_t fontSize,  String strUser);
     void clearOled(void);
+
+
+/* PZEM-016 Modbus RTU AC power meter module */
+bool   PZEM_016(uint8_t id, float &volt, float &amp, float &power, uint16_t &engergy, float &freq, float &pf);
+float  PZEM_016_Volt(uint8_t id);
+float  PZEM_016_Amp(uint8_t id);
+float  PZEM_016_Power(uint8_t id);
+int16_t  PZEM_016_Energy(uint8_t id);
+float  PZEM_016_Freq(uint8_t id);  
+float  PZEM_016_PF(uint8_t id);
+bool PZEM_016_ResetEnergy(uint8_t id);
+int8_t PZEM_016_SetAddress(uint8_t id, uint8_t new_id);
+int8_t PZEM_016_SearchAddress(void);
+bool PZEM_016_begin(uint8_t rx = RXD2, uint8_t tx = TXD2);
+
+
+
+/* PZEM-003 Modbus RTU DC power meter module */
+bool   PZEM_003(uint8_t id, float &volt, float &amp, float &power, uint16_t &engergy);
+float  PZEM_003_Volt(uint8_t id);
+float  PZEM_003_Amp(uint8_t id);
+float  PZEM_003_Power(uint8_t id);
+int16_t  PZEM_003_Energy(uint8_t id);
+bool PZEM_003_ResetEnergy(uint8_t id);
+int8_t PZEM_003_SetAddress(uint8_t id, uint8_t new_id);
+int8_t PZEM_003_SearchAddress(void);
+bool PZEM_003_begin(uint8_t rx = RXD2, uint8_t tx = TXD2);
+
+
+/* WTR10-E Modbus RTU Temperature and Humidity sensor module */
+bool WTR10_E_begin(uint8_t rx = RXD2, uint8_t tx = TXD2);
+bool WTR10_E(uint8_t id, float &temp, float &humi);
+float WTR10_E_tempeature(uint8_t id);
+float WTR10_E_humidity(uint8_t id);
+
+/* XY-MD02 Modbus RTU Temperature and Humidity sensor module */
+bool XY_MD02_begin(uint8_t rx = RXD2, uint8_t tx = TXD2);
+bool XY_MD02(uint8_t id, float &temp, float &humi);
+float XY_MD02_tempeature(uint8_t id);
+float XY_MD02_humidity(uint8_t id);
+int8_t XY_MD02_searchAddress(void);
+int8_t XY_MD02_SetAddress(uint8_t id, uint8_t new_id);
+
+/* SOIL MOISTURE PR-3000-H-N01 sensor (RS485) module */
+bool PR3000_H_N01_begin(uint8_t rx = RXD2, uint8_t tx = TXD2);
+bool PR3000_H_N01(float &temp, float &humi);
+float PR3000_H_N01_tempeature();
+float PR3000_H_N01_humidity();
+
+/* RS485 Water Flow Meter RS485 MODBUS output  */
+bool WATER_FLOW_METER_begin(uint8_t rx = RXD2, uint8_t tx = TXD2);
+int8_t WATER_FLOW_METER_searchAddress(void);
+int8_t WATER_FLOW_METER_SetAddress(uint8_t id, uint8_t new_id);
+float WATER_FLOW_METER_flowrate(uint8_t id);
+
+
+/* PYR20-Solar Radiation/Pyranometer Sensor, RS485, Modbus */
+bool PYR20_begin(uint8_t rx = RXD2, uint8_t tx = TXD2);
+int8_t PYR20_searchAddress(void);
+int8_t PYR20_SetAddress(uint8_t id, uint8_t new_id);
+int16_t PYR20_read(uint8_t id);
+
+/* tiny32 ModbusRTU communication*/
+bool tiny32_ModbusRTU_begin(uint8_t rx = RXD2, uint8_t tx = TXD2);
+int8_t tiny32_ModbusRTU_searchAddress(void);
+int8_t tiny32_ModbusRTU_setAddress(uint8_t id, uint8_t new_id);
+bool tiny32_ModbusRTU(uint8_t id, float &val1, float &val2, float &val3, float &val4, float &val5, float &val6, float &val7, float &val8, float &val9, float &val10);
+bool tiny32_ModbusRTU(uint8_t id, float &val1, float &val2, float &val3, float &val4, float &val5, float &val6, float &val7, float &val8, float &val9);
+bool tiny32_ModbusRTU(uint8_t id, float &val1, float &val2, float &val3, float &val4, float &val5, float &val6, float &val7, float &val8);
+bool tiny32_ModbusRTU(uint8_t id, float &val1, float &val2, float &val3, float &val4, float &val5, float &val6, float &val7);
+bool tiny32_ModbusRTU(uint8_t id, float &val1, float &val2, float &val3, float &val4, float &val5, float &val6);
+bool tiny32_ModbusRTU(uint8_t id, float &val1, float &val2, float &val3, float &val4, float &val5);
+bool tiny32_ModbusRTU(uint8_t id, float &val1, float &val2, float &val3, float &val4);
+bool tiny32_ModbusRTU(uint8_t id, float &val1, float &val2, float &val3);
+bool tiny32_ModbusRTU(uint8_t id, float &val1, float &val2);
+bool tiny32_ModbusRTU(uint8_t id, float &val1);
+
 };
 
 
