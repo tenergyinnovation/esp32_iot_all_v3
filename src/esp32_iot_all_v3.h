@@ -16,7 +16,8 @@
  *                    - Add SOIL MOISTURE PR-3000-H-N01 sensor (RS485) fix id = 1, baud rate = 4800  
  *                    - Add RS485 Water Flow Meter RS485 MODBUS output  
  *                    - Add PYR20-Solar Radiation/Pyranometer Sensor, RS485, Modbus   
- *                    - Add tiny32 ModbusRTU communication      
+ *                    - Add tiny32 ModbusRTU communication    
+ * Rev1.5       :     - Add MIZTEK-Fan 3phase ModbusRTU    
  * website      :     http://www.tenergyinnovation.co.th
  * Email        :     uten.boonliam@innovation.co.th
  * TEL          :     089-140-7205
@@ -33,7 +34,7 @@
 class esp32_iot_all_v3
 {
 private:
-#define version_c  "1.4"
+#define version_c  "1.5"
 
 private:
 /* RTC variable */
@@ -245,6 +246,16 @@ bool tiny32_ModbusRTU(uint8_t id, float &val1, float &val2, float &val3, float &
 bool tiny32_ModbusRTU(uint8_t id, float &val1, float &val2, float &val3);
 bool tiny32_ModbusRTU(uint8_t id, float &val1, float &val2);
 bool tiny32_ModbusRTU(uint8_t id, float &val1);
+
+/* Control Fan 3phase model Model:ECF(K)8D355-PLHDAL11-RF */
+bool MIZTEK_Fan1p_ModbusRTU_begin(uint8_t rx = RXD2, uint8_t tx = TXD2);
+int8_t MIZTEK_Fan1p_ModbusRTU_searchAddress(void);
+int8_t MIZTEK_Fan1p_ModbusRTU_setAddress(uint8_t id, uint8_t new_id);
+bool MIZTEK_Fan1p_ModbusRTU_CtlSpeed(uint8_t id, uint16_t speed);
+
+
+
+
 
 };
 
