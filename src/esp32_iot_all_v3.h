@@ -18,6 +18,7 @@
  *                    - Add PYR20-Solar Radiation/Pyranometer Sensor, RS485, Modbus   
  *                    - Add tiny32 ModbusRTU communication    
  * Rev1.5       :     - Add MIZTEK-Fan 3phase ModbusRTU    
+ * Rev1.5.1     :     Revise code for Add RS485 Water Flow Meter RS485 MODBUS output (Rev1.4)  
  * website      :     http://www.tenergyinnovation.co.th
  * Email        :     uten.boonliam@innovation.co.th
  * TEL          :     089-140-7205
@@ -34,7 +35,7 @@
 class esp32_iot_all_v3
 {
 private:
-#define version_c  "1.5"
+#define version_c  "1.5.1"
 
 private:
 /* RTC variable */
@@ -223,7 +224,7 @@ float PR3000_H_N01_humidity();
 bool WATER_FLOW_METER_begin(uint8_t rx = RXD2, uint8_t tx = TXD2);
 int8_t WATER_FLOW_METER_searchAddress(void);
 int8_t WATER_FLOW_METER_SetAddress(uint8_t id, uint8_t new_id);
-float WATER_FLOW_METER_flowrate(uint8_t id);
+float WATER_FLOW_METER(uint8_t id);
 
 
 /* PYR20-Solar Radiation/Pyranometer Sensor, RS485, Modbus */

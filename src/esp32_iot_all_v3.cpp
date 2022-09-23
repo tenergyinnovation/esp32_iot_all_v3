@@ -8375,12 +8375,12 @@ int8_t esp32_iot_all_v3::WATER_FLOW_METER_SetAddress(uint8_t id, uint8_t new_id)
 }
 
 /***********************************************************************
- * FUNCTION:    WATER_FLOW_METER_flowrate
- * DESCRIPTION: Set Address for WATER_FLOW_METER Module [1-252]
+ * FUNCTION:    WATER_FLOW_METER
+ * DESCRIPTION: get value from water flow meter (0.01m^2)
  * PARAMETERS:  id
  * RETURNED:    Flow water(m^3) cubic meters
  ***********************************************************************/
-float esp32_iot_all_v3::WATER_FLOW_METER_flowrate(uint8_t id)
+float esp32_iot_all_v3::WATER_FLOW_METER(uint8_t id)
 {
   // #define modbusRTU_Debug
   float _flowrate;
