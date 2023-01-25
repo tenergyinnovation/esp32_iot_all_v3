@@ -1430,7 +1430,7 @@ void TleImage()
  * PARAMETERS:  address(id)
  * RETURNED:    true, false and reference parameter => volt, amp, power, energy, freq, pf
  ***********************************************************************/
-bool esp32_iot_all_v3::PZEM_016(uint8_t id, float &volt, float &amp, float &power, uint16_t &energy, float &freq, float &pf)
+bool esp32_iot_all_v3::PZEM_016(uint8_t id, float &volt, float &amp, float &power, uint32_t &energy, float &freq, float &pf)
 {
   // #define modbusRTU_Debug
 
@@ -2376,7 +2376,7 @@ float esp32_iot_all_v3::PZEM_016_Power(uint8_t id)
  * PARAMETERS:  address(id)
  * RETURNED:    energy
  ***********************************************************************/
-int16_t esp32_iot_all_v3::PZEM_016_Energy(uint8_t id)
+int32_t esp32_iot_all_v3::PZEM_016_Energy(uint8_t id)
 {
 
   uint16_t _energy;
@@ -3673,7 +3673,7 @@ bool esp32_iot_all_v3::PZEM_016_begin(uint8_t rx, uint8_t tx)
  * PARAMETERS:  address(id)
  * RETURNED:    true, false and reference parameter => volt, amp, power, energy
  ***********************************************************************/
-bool esp32_iot_all_v3::PZEM_003(uint8_t id, float &volt, float &amp, float &power, uint16_t &energy)
+bool esp32_iot_all_v3::PZEM_003(uint8_t id, float &volt, float &amp, float &power, uint32_t &energy)
 {
   // #define modbusRTU_Debug
 
@@ -4580,7 +4580,7 @@ float esp32_iot_all_v3::PZEM_003_Power(uint8_t id)
  * PARAMETERS:  address(id)
  * RETURNED:    energy
  ***********************************************************************/
-int16_t esp32_iot_all_v3::PZEM_003_Energy(uint8_t id)
+int32_t esp32_iot_all_v3::PZEM_003_Energy(uint8_t id)
 {
   uint16_t _energy;
   // #define modbusRTU_Debug

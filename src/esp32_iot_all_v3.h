@@ -19,6 +19,7 @@
  *                    - Add tiny32 ModbusRTU communication    
  * Rev1.5       :     - Add MIZTEK-Fan 3phase ModbusRTU    
  * Rev1.5.1     :     Revise code for Add RS485 Water Flow Meter RS485 MODBUS output (Rev1.4)  
+ * Rev1.6       :     Fix bug for pzem-016 and pzem-003  
  * website      :     http://www.tenergyinnovation.co.th
  * Email        :     uten.boonliam@innovation.co.th
  * TEL          :     089-140-7205
@@ -35,7 +36,7 @@
 class esp32_iot_all_v3
 {
 private:
-#define version_c  "1.5.1"
+#define version_c  "1.6"
 
 private:
 /* RTC variable */
@@ -174,11 +175,11 @@ public:
 
 
 /* PZEM-016 Modbus RTU AC power meter module */
-bool   PZEM_016(uint8_t id, float &volt, float &amp, float &power, uint16_t &engergy, float &freq, float &pf);
+bool   PZEM_016(uint8_t id, float &volt, float &amp, float &power, uint32_t &engergy, float &freq, float &pf);
 float  PZEM_016_Volt(uint8_t id);
 float  PZEM_016_Amp(uint8_t id);
 float  PZEM_016_Power(uint8_t id);
-int16_t  PZEM_016_Energy(uint8_t id);
+int32_t  PZEM_016_Energy(uint8_t id);
 float  PZEM_016_Freq(uint8_t id);  
 float  PZEM_016_PF(uint8_t id);
 bool PZEM_016_ResetEnergy(uint8_t id);
@@ -189,11 +190,11 @@ bool PZEM_016_begin(uint8_t rx = RXD2, uint8_t tx = TXD2);
 
 
 /* PZEM-003 Modbus RTU DC power meter module */
-bool   PZEM_003(uint8_t id, float &volt, float &amp, float &power, uint16_t &engergy);
+bool   PZEM_003(uint8_t id, float &volt, float &amp, float &power, uint32_t &engergy);
 float  PZEM_003_Volt(uint8_t id);
 float  PZEM_003_Amp(uint8_t id);
 float  PZEM_003_Power(uint8_t id);
-int16_t  PZEM_003_Energy(uint8_t id);
+int32_t  PZEM_003_Energy(uint8_t id);
 bool PZEM_003_ResetEnergy(uint8_t id);
 int8_t PZEM_003_SetAddress(uint8_t id, uint8_t new_id);
 int8_t PZEM_003_SearchAddress(void);
